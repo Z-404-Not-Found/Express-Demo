@@ -14,6 +14,11 @@ const updateController = {
             });
 
             const bucketName = "express-demo-apk";
+            await minioClient.bucketExists(bucketName).then((exists) => {
+                if (!exists) {
+                    minioClient.makeBucket(bucketName);
+                }
+            });
             const stream = minioClient.listObjectsV2(bucketName, "", true);
 
             let latestVersion = null;
