@@ -48,9 +48,9 @@ const uploadController = {
                 useSSL: false,
             });
             const bucketName = "express-demo-image-bed";
-            await minioClient.bucketExists(bucketName).then((exists) => {
+            await minioClient.bucketExists(bucketName).then(async (exists) => {
                 if (!exists) {
-                    minioClient.makeBucket(bucketName);
+                    await minioClient.makeBucket(bucketName);
                 }
             });
             const objectName = req.file.filename;
