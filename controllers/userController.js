@@ -25,7 +25,7 @@ const userController = {
                 });
                 successHandler(res, "登录成功", {
                     ...data,
-                    token,
+                    token: "Bearer " + token,
                     password: undefined,
                 });
             })
